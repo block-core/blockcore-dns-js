@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PROJECT_NAME: 'blockcore-dns-js'
+      PROJECT_NAME: 'blockcore-dns'
 
     steps:
     - uses: actions/checkout@master
