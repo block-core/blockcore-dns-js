@@ -33,3 +33,17 @@ import { BlockcoreDns } from '@blockcore/dns';
 let dns = new BlockcoreDns();
 let servers = await dns.getDnsServers();
 ```
+
+After getting the servers, either you can loop all of them or pick a single one:
+
+```ts
+let server = servers[0];
+
+dns.setActiveServer(dnsServer.url);
+
+await dns.getServicesByType('Indexer');
+await dns.getServicesByNetwork('CITY');
+await dns.getServicesByTypeAndNetwork('Indexer', 'CITY');
+await dns.getExternalIP();
+```
+
