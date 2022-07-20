@@ -9,7 +9,7 @@
     DNS Provider package to query and resolve dynamic and decentralized DNS entries
   </p>
   <p align="center">
-      <a href="https://github.com/block-core/blockcore-provider/actions/workflows/test.yml"><img src="https://github.com/block-core/blockcore-provider/actions/workflows/test.yml/badge.svg" /></a>
+      <a href="https://github.com/block-core/blockcore-dns-js/actions/workflows/build.yml"><img src="https://github.com/block-core/blockcore-dns-js/actions/workflows/build.yml/badge.svg" /></a>   <a href="https://github.com/block-core/blockcore-dns-js/actions/workflows/release.yml"><img src="https://github.com/block-core/blockcore-dns-js/actions/workflows/release.yml/badge.svg" /></a>
   </p>
   <p align="center"><em>Work-in-Progress - use with caution!</em></p>
 </p>
