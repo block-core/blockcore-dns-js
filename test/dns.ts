@@ -7,5 +7,5 @@ test('foo', (t) => {
 
 test('bar', async (t) => {
 	let dns: Dns = { IP: '127.0.0.1' };
-	t.is(dns, { IP: '127.0.0.1' });
+	t.deepEqual(dns, { IP: '127.0.0.1' });
 });
