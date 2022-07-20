@@ -1,5 +1,2 @@
-export interface Dns {
-	IP: string;
-}
-
-
+export * from './BlockcoreDns.js'
+export * from './types.js';

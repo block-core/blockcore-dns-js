@@ -1,7 +1,5 @@
-import { BlockcoreDnsOptions } from './options.js';
+import { BlockcoreDnsOptions, DnsListEntry, ServiceListEntry } from './types.js';
 import fetch, { Response } from 'node-fetch';
-import { DnsListEntry } from './DnsListEntry.js';
-import { ServiceListEntry } from './ServiceListEntry.js';
 
 export class BlockcoreDns {
 	static defaultOptions: BlockcoreDnsOptions = {
@@ -27,13 +25,18 @@ export class BlockcoreDns {
 		return servers;
 	}
 
-	async getServersByService(service: 'Indexer' | 'Explorer') {
+	async getServicesByType(service: 'Indexer' | 'Explorer') {
 		const url = `${this.activeServer}/api/dns/services/service/${service}`;
 		return await this.fetchJson<ServiceListEntry[]>(url);
 	}
 
-	async getServersByServiceAndNetwork(service: 'Indexer' | 'Explorer', symbol: string) {
+	async getServicesByTypeAndNetwork(service: 'Indexer' | 'Explorer', symbol: string) {
 		const url = `${this.activeServer}/api/dns/services/symbol/${symbol}/service/${service}`;
+		return await this.fetchJson<ServiceListEntry[]>(url);
+	}
+
+	async getServicesByNetwork(symbol: string) {
+		const url = `${this.activeServer}/api/dns/services/symbol/${symbol}`;
 		return await this.fetchJson<ServiceListEntry[]>(url);
 	}
 
