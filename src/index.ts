@@ -1,3 +1,3 @@
-export interface DNS {
-  IP: string;
+export interface Dns {
+	IP: string;
 }
