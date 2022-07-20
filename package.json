@@ -1,12 +1,19 @@
 {
-  "name": "blockcore-dns",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "name": "@blockcore/dns",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+  "files": [
+		"dist"
+	],
+  "engines": {
+		"node": ">=14.16"
+	},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "node -p \"require('./package.json').version\""
   },
   "repository": {
     "type": "git",

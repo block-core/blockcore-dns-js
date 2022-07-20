@@ -1,6 +1,7 @@
 {
   "extends": "@blockcore/tsconfig",
   "compilerOptions": {
+	"outDir": "dist",
   },
   "include": [
 		"src",
