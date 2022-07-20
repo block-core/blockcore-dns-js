@@ -1,11 +1,11 @@
 {
   "name": "@blockcore/dns",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "dist"
+    "lib/**/*"
   ],
   "engines": {
     "node": ">=14.16"
@@ -52,7 +52,8 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "@blockcore/dns": "^0.0.3",
+    "@blockcore/identity": "^0.0.1",
     "node-fetch": "^3.2.9"
   }
 }
