@@ -13,6 +13,20 @@ test('bar', async (t) => {
 
 test('get DNS servers', async (t) => {
 	let dns = BlockcoreDns.create();
-	let servers = await dns.getDnsServers();
-	t.not(servers, null);
+	let dnsServers = await dns.getDnsServers();
+	t.not(dnsServers, null);
+});
+
+test('get services from first DNS server', async (t) => {
+	let dns = BlockcoreDns.create();
+	let dnsServers = await dns.getDnsServers();
+	t.not(dnsServers, null);
+
+	let dnsServer = dnsServers[0];
+
+	// Set the active server on this instance.
+	dns.setActiveServer(dnsServer.url);
+
+	let servers = await dns.getServersByService('Indexer');
+	t.true(servers.length > 10);
 });

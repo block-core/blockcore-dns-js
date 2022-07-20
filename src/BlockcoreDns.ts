@@ -1,5 +1,7 @@
 import { BlockcoreDnsOptions } from './options.js';
 import fetch from 'node-fetch';
+import { DnsListEntry } from './DnsListEntry.js';
+import { ServiceListEntry } from './ServiceListEntry.js';
 
 export class BlockcoreDns {
 	static defaultOptions: BlockcoreDnsOptions = {
@@ -11,11 +13,26 @@ export class BlockcoreDns {
 		return dns;
 	}
 
+	private activeServer?: string;
+
 	constructor(private options: BlockcoreDnsOptions = BlockcoreDns.defaultOptions) {}
 
-	async getDnsServers() {
-		const url = `${this.options.baseUrl}/services/BLOCKCORE-DNS.json`;
+	setActiveServer(url: string) {
+		this.activeServer = url;
+	}
 
+	async getDnsServers() {
+		const url = `${this.options.baseUrl}/services/DNS.json`;
+		const servers = await this.fetchUrl<DnsListEntry[]>(url);
+		return servers;
+	}
+
+	async getServersByService(service: 'Indexer' | 'Explorer') {
+		const url = `${this.activeServer}/api/dns/services/service/${service}`;
+		return await this.fetchUrl<ServiceListEntry[]>(url);
+	}
+
+	private async fetchUrl<T>(url: string): Promise<T> {
 		const response = await fetch(url, {
 			method: 'GET',
 			// mode: 'cors',
@@ -28,7 +45,6 @@ export class BlockcoreDns {
 			referrerPolicy: 'no-referrer',
 		});
 
-		const servers = await response.json();
-		return servers;
+		return response.json() as Promise<T>;
 	}
 }
