@@ -23,3 +23,13 @@ npm install @blockcore/dns
 ```
 
 **Warning:** This package is native [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) and does not provide a CommonJS export. If your project uses CommonJS, you'll have to [convert to ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) or use the [dynamic `import()`](https://v8.dev/features/dynamic-import) function.
+
+
+## Usage
+
+```ts
+import { BlockcoreDns } from '@blockcore/dns';
+
+let dns = new BlockcoreDns();
+let servers = await dns.getDnsServers();
+```
