@@ -30,20 +30,18 @@ npm install @blockcore/dns
 ```ts
 import { BlockcoreDns } from '@blockcore/dns';
 
-let dns = new BlockcoreDns();
-let servers = await dns.getDnsServers();
+let dns = new BlockcoreDns('https://ns.blockcore.net');
+let indexers = await dns.getServicesByType('Indexer');
 ```
 
-After getting the servers, either you can loop all of them or pick a single one:
+You can retrieve the public known nameservers and use those instead of manually specifying server:
 
 ```ts
-let server = servers[0];
-
-dns.setActiveServer(dnsServer.url);
+let dnsServers = await BlockcoreDns.getDnsServers();
+dns.setActiveServer(dnsServers[0].url);
 
 await dns.getServicesByType('Indexer');
 await dns.getServicesByNetwork('CITY');
 await dns.getServicesByTypeAndNetwork('Indexer', 'CITY');
 await dns.getExternalIP();
 ```
-
