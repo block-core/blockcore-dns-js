@@ -1,6 +1,6 @@
 {
   "name": "@blockcore/dns",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "exports": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -52,7 +52,6 @@
     ]
   },
   "dependencies": {
-    "@blockcore/dns": "^0.0.3",
     "@blockcore/identity": "^0.0.1",
     "node-fetch": "^3.2.9"
   }

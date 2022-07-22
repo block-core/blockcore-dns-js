@@ -10,7 +10,3 @@ export interface ServiceListEntry {
     ttl: number,
     online: boolean
 }
-
-export interface BlockcoreDnsOptions {
-	baseUrl: string;
-}

@@ -1,71 +1,41 @@
-import { BlockcoreDnsOptions, DnsListEntry, ServiceListEntry } from './types.js';
-import fetch, { Response } from 'node-fetch';
+import { DnsListEntry, ServiceListEntry } from './types.js';
+import { WebRequest } from './Request.js';
 
 export class BlockcoreDns {
-	static defaultOptions: BlockcoreDnsOptions = {
-		baseUrl: 'https://chains.blockcore.net',
-	};
-
-	static create() {
-		const dns = new BlockcoreDns();
-		return dns;
+	/** Call this to have data to provide an instance of the Blockcore DNS. */
+	static async getDnsServers() {
+		const url = `https://chains.blockcore.net/services/DNS.json`;
+		const servers = await WebRequest.fetchJson<DnsListEntry[]>(url);
+		return servers;
 	}
 
 	private activeServer?: string;
 
-	constructor(private options: BlockcoreDnsOptions = BlockcoreDns.defaultOptions) {}
+	constructor(nameserver: string) {
+		this.setActiveServer(nameserver);
+	}
 
 	setActiveServer(url: string) {
 		this.activeServer = url;
 	}
 
-	async getDnsServers() {
-		const url = `${this.options.baseUrl}/services/DNS.json`;
-		const servers = await this.fetchJson<DnsListEntry[]>(url);
-		return servers;
-	}
-
 	async getServicesByType(service: 'Indexer' | 'Explorer') {
 		const url = `${this.activeServer}/api/dns/services/service/${service}`;
-		return await this.fetchJson<ServiceListEntry[]>(url);
+		return await WebRequest.fetchJson<ServiceListEntry[]>(url);
 	}
 
 	async getServicesByTypeAndNetwork(service: 'Indexer' | 'Explorer', symbol: string) {
 		const url = `${this.activeServer}/api/dns/services/symbol/${symbol}/service/${service}`;
-		return await this.fetchJson<ServiceListEntry[]>(url);
+		return await WebRequest.fetchJson<ServiceListEntry[]>(url);
 	}
 
 	async getServicesByNetwork(symbol: string) {
 		const url = `${this.activeServer}/api/dns/services/symbol/${symbol}`;
-		return await this.fetchJson<ServiceListEntry[]>(url);
+		return await WebRequest.fetchJson<ServiceListEntry[]>(url);
 	}
 
 	async getExternalIP() {
 		const url = `${this.activeServer}/api/dns/ipaddress`;
-		return await this.fetchText(url);
-	}
-
-	private async fetchText(url: string): Promise<string> {
-		const response = await this.fetchUrl(url);
-		return response.text();
-	}
-
-	private async fetchJson<T>(url: string): Promise<T> {
-		const response = await this.fetchUrl(url);
-		return response.json() as Promise<T>;
-	}
-
-	private async fetchUrl(url: string): Promise<Response> {
-		return await fetch(url, {
-			method: 'GET',
-			// mode: 'cors',
-			// cache: 'no-cache',
-			// credentials: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			redirect: 'follow',
-			referrerPolicy: 'no-referrer',
-		});
+		return await WebRequest.fetchText(url);
 	}
 }
