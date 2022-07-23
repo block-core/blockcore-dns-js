@@ -11,15 +11,12 @@ export class WebRequest {
 
 	public static async fetchUrl(url: string): Promise<Response> {
 		return await fetch(url, {
-			method: 'GET',
-			// mode: 'cors',
-			// cache: 'no-cache',
-			// credentials: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			redirect: 'follow',
-			referrerPolicy: 'no-referrer',
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'omit',
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
 		});
 	}
 }
