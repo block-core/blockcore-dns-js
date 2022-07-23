@@ -50,8 +50,5 @@
     "nodeArguments": [
       "--loader=ts-node/esm"
     ]
-  },
-  "dependencies": {
-    "@blockcore/identity": "^0.0.1"
   }
 }
