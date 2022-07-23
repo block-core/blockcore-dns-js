@@ -1,3 +1,12 @@
+## <small>0.0.7 (2022-07-23)</small>
+
+* Export the WebRequest from DNS library ([1ab1229](https://github.com/block-core/blockcore-dns-js/commit/1ab1229))
+* Remove header type and omit credentials for CORS ([e96d5d2](https://github.com/block-core/blockcore-dns-js/commit/e96d5d2))
+* Set major version for node setup ([6cd7100](https://github.com/block-core/blockcore-dns-js/commit/6cd7100))
+* Update version and changelog ([8f936ac](https://github.com/block-core/blockcore-dns-js/commit/8f936ac))
+
+
+
 ## <small>0.0.6 (2022-07-23)</small>
 
 * Remove unused dependency ([92e90d6](https://github.com/block-core/blockcore-dns-js/commit/92e90d6))
