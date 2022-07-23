@@ -8,7 +8,7 @@
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=14.16"
+    "node": ">=18.*"
   },
   "scripts": {
     "build": "tsc",
@@ -52,7 +52,6 @@
     ]
   },
   "dependencies": {
-    "@blockcore/identity": "^0.0.1",
-    "node-fetch": "^3.2.9"
+    "@blockcore/identity": "^0.0.1"
   }
 }

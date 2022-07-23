@@ -40,7 +40,7 @@ test('get CITY services from second DNS server', async (t) => {
 	let dnsServers = await BlockcoreDns.getDnsServers();
 	let dns = new BlockcoreDns(dnsServers[1].url);
 	let servers = await dns.getServicesByNetwork('CITY');
-	
+
 	// When the second nameserver adds indexers for CITY, update this test.
 	t.true(servers.length == 0);
 });
