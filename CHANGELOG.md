@@ -1,3 +1,10 @@
+## <small>0.0.8 (2022-07-23)</small>
+
+* Add logic to get nameservers and the services registered on them ([b0f638e](https://github.com/block-core/blockcore-dns-js/commit/b0f638e))
+* Update version and changelog ([05a97ee](https://github.com/block-core/blockcore-dns-js/commit/05a97ee))
+
+
+
 ## <small>0.0.7 (2022-07-23)</small>
 
 * Export the WebRequest from DNS library ([1ab1229](https://github.com/block-core/blockcore-dns-js/commit/1ab1229))
