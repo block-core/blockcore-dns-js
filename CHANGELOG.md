@@ -1,3 +1,11 @@
+## <small>0.0.9 (2022-09-18)</small>
+
+* Add description which is used on search listings on npmjs ([125669c](https://github.com/block-core/blockcore-dns-js/commit/125669c))
+* Allow custom set of nameservers ([c70e73a](https://github.com/block-core/blockcore-dns-js/commit/c70e73a))
+* Update version and changelog ([84c3aa4](https://github.com/block-core/blockcore-dns-js/commit/84c3aa4))
+
+
+
 ## <small>0.0.8 (2022-07-23)</small>
 
 * Add logic to get nameservers and the services registered on them ([b0f638e](https://github.com/block-core/blockcore-dns-js/commit/b0f638e))
