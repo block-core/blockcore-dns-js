@@ -55,8 +55,8 @@ You can create an load the nameservers using this static function:
 let dnsServers = await BlockcoreDns.getDnsServers();
 dns.setActiveServer(dnsServers[0].url);
 
-await dns.getServicesByType('Indexer');
-await dns.getServicesByNetwork('CITY');
-await dns.getServicesByTypeAndNetwork('Indexer', 'CITY');
-await dns.getExternalIP();
+await dns.api.getServicesByType('Indexer');
+await dns.api.getServicesByNetwork('CITY');
+await dns.api.getServicesByTypeAndNetwork('Indexer', 'CITY');
+await dns.api.getExternalIP();
 ```

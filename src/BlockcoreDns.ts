@@ -6,10 +6,10 @@ import { BlockcoreDnsClient } from './BlockcoreDnsClient.js';
 export class BlockcoreDns {
 	private nameservers: DnsListEntry[] = [];
 	private services: ServiceListEntry[] = [];
-	private dns: BlockcoreDnsClient;
+	public api: BlockcoreDnsClient;
 
 	constructor() {
-		this.dns = new BlockcoreDnsClient('');
+		this.api = new BlockcoreDnsClient('');
 	}
 
 	private async getDnsServers() {
@@ -45,9 +45,9 @@ export class BlockcoreDns {
 				continue;
 			}
 
-			this.dns.setActiveServer(nameserver.url);
+			this.api.setActiveServer(nameserver.url);
 
-			const services = await this.dns.getServicesByType('Indexer');
+			const services = await this.api.getServicesByType('Indexer');
 
 			services.forEach((item) => servicesMap.set(item.domain, { ...servicesMap.get(item.domain), ...item }));
 		}

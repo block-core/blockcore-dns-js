@@ -34,4 +34,7 @@ test.serial('allow custom list of nameservers', async (t) => {
 
 	t.not(services, null);
 	t.assert(services[0].symbol === 'STRAX');
+
+	let ip = await dns.api.getExternalIP();
+	t.not(ip, null);
 });
