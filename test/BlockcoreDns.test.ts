@@ -19,3 +19,19 @@ test.serial('get online services and verify network', async (t) => {
 	t.not(services, null);
 	t.assert(services[0].symbol === 'CITY');
 });
+
+test.serial('allow custom list of nameservers', async (t) => {
+	let dns = new BlockcoreDns();
+	await dns.load([
+		{ url: 'https://ns.blockcore.net', contact: 'post@blockcore.net' },
+		{
+			url: 'https://ns.coinvault.io',
+			contact: 'post@coinvault.io',
+		},
+	]);
+
+	let services = dns.getOnlineServicesByNetwork('STRAX');
+
+	t.not(services, null);
+	t.assert(services[0].symbol === 'STRAX');
+});

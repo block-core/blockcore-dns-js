@@ -33,8 +33,8 @@ export class BlockcoreDns {
 	/** Attempts to load the latest status of all services from all known nameservers. This method can be called
 	 * at intervals to ensure latest status is available.
 	 */
-	async load() {
-		this.nameservers = await this.getDnsServers();
+	async load(nameservers?: DnsListEntry[]) {
+		this.nameservers = nameservers || (await this.getDnsServers());
 
 		const servicesMap = new Map();
 
