@@ -58,5 +58,13 @@ export class BlockcoreDns {
 		}
 
 		this.services = Array.from(servicesMap.values());
+
+		// Set randomly active server after load is complete.
+		const randomIndex = this.getRandomInt(this.nameservers.length);
+		this.api.setActiveServer(this.nameservers[randomIndex]!.url);
+	}
+
+	private getRandomInt(max: number) {
+		return Math.floor(Math.random() * max);
 	}
 }
