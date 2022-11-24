@@ -12,12 +12,12 @@ export class BlockcoreDnsClient {
 		this.activeServer = url;
 	}
 
-	async getServicesByType(service: 'Indexer' | 'Explorer') {
+	async getServicesByType(service: string) {
 		const url = `${this.activeServer}/api/dns/services/service/${service}`;
 		return await WebRequest.fetchJson<ServiceListEntry[]>(url);
 	}
 
-	async getServicesByTypeAndNetwork(service: 'Indexer' | 'Explorer', symbol: string) {
+	async getServicesByTypeAndNetwork(service: string, symbol: string) {
 		const url = `${this.activeServer}/api/dns/services/symbol/${symbol}/service/${service}`;
 		return await WebRequest.fetchJson<ServiceListEntry[]>(url);
 	}

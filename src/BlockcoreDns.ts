@@ -12,7 +12,7 @@ export class BlockcoreDns {
 		this.api = new BlockcoreDnsClient('');
 	}
 
-	private async getDnsServers() {
+	public async getDnsServers() {
 		const url = `https://chains.blockcore.net/services/DNS.json`;
 		const servers = await WebRequest.fetchJson<DnsListEntry[]>(url);
 		return servers;
@@ -32,8 +32,12 @@ export class BlockcoreDns {
 
 	/** Attempts to load the latest status of all services from all known nameservers. This method can be called
 	 * at intervals to ensure latest status is available.
+	 *
+	 * By supplying the serviceType, a different than default list of services can be provided in the .getServices() method.
+	 *
+	 * Supply null as parameter for serviceType to avoid preloading services.
 	 */
-	async load(nameservers?: DnsListEntry[]) {
+	async load(nameservers?: DnsListEntry[], serviceType = 'Indexer') {
 		this.nameservers = nameservers || (await this.getDnsServers());
 
 		const servicesMap = new Map();
@@ -47,9 +51,10 @@ export class BlockcoreDns {
 
 			this.api.setActiveServer(nameserver.url);
 
-			const services = await this.api.getServicesByType('Indexer');
-
-			services.forEach((item) => servicesMap.set(item.domain, { ...servicesMap.get(item.domain), ...item }));
+			if (serviceType) {
+				const services = await this.api.getServicesByType(serviceType);
+				services.forEach((item) => servicesMap.set(item.domain, { ...servicesMap.get(item.domain), ...item }));
+			}
 		}
 
 		this.services = Array.from(servicesMap.values());
