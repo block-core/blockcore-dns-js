@@ -1,3 +1,10 @@
+## <small>0.0.11 (2022-11-24)</small>
+
+* Add random selection of active server on load complete ([0f52627](https://github.com/block-core/blockcore-dns-js/commit/0f52627))
+* Update version and changelog ([a8328c8](https://github.com/block-core/blockcore-dns-js/commit/a8328c8))
+
+
+
 ## <small>0.0.10 (2022-11-24)</small>
 
 * Allow the load operation of DNS library to include serviceType (null to don't get services) ([cd94dd5](https://github.com/block-core/blockcore-dns-js/commit/cd94dd5))
