@@ -1,7 +1,16 @@
+## <small>0.0.10 (2022-11-24)</small>
+
+* Allow the load operation of DNS library to include serviceType (null to don't get services) ([cd94dd5](https://github.com/block-core/blockcore-dns-js/commit/cd94dd5))
+* Update packages ([cfbeca5](https://github.com/block-core/blockcore-dns-js/commit/cfbeca5))
+* Update the documentation and make API a public field ([d35cbbe](https://github.com/block-core/blockcore-dns-js/commit/d35cbbe))
+
+
+
 ## <small>0.0.9 (2022-09-18)</small>
 
 * Add description which is used on search listings on npmjs ([125669c](https://github.com/block-core/blockcore-dns-js/commit/125669c))
 * Allow custom set of nameservers ([c70e73a](https://github.com/block-core/blockcore-dns-js/commit/c70e73a))
+* Update version and changelog ([0e6c439](https://github.com/block-core/blockcore-dns-js/commit/0e6c439))
 * Update version and changelog ([84c3aa4](https://github.com/block-core/blockcore-dns-js/commit/84c3aa4))
 
 
