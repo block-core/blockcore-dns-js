@@ -56,6 +56,7 @@ export class BlockcoreDnsClient {
 		} catch (err) {
 			console.warn(`Unable to find external IP.`);
 			console.error(err);
+			return '';
 		}
 	}
 }
