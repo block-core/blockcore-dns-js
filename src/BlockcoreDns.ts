@@ -14,8 +14,27 @@ export class BlockcoreDns {
 
 	public async getDnsServers() {
 		const url = `https://chains.blockcore.net/services/DNS.json`;
-		const servers = await WebRequest.fetchJson<DnsListEntry[]>(url);
-		return servers;
+		try {
+			const servers = await WebRequest.fetchJson<DnsListEntry[]>(url);
+			return servers;
+		} catch (err) {
+			console.warn(`Unable to retrieve DNS list, using fixed list instead. URL: ${url}`);
+			console.error(err);
+			return [
+				{
+					url: 'https://ns.blockcore.net',
+					contact: 'post@blockcore.net',
+				},
+				{
+					url: 'https://ns.coinvault.io',
+					contact: 'post@coinvault.io',
+				},
+				{
+					url: 'https://ns.seniorblockchain.io',
+					contact: 'post@seniorblockchain.io',
+				},
+			];
+		}
 	}
 
 	public getNameServers() {
