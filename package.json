@@ -1,6 +1,6 @@
 {
   "name": "@blockcore/dns",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "DNS Provider package to query and resolve dynamic and decentralized DNS entries",
   "type": "module",
   "exports": "./lib/index.js",

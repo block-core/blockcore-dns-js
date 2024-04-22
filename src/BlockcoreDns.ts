@@ -71,8 +71,13 @@ export class BlockcoreDns {
 			this.api.setActiveServer(nameserver.url);
 
 			if (serviceType) {
-				const services = await this.api.getServicesByType(serviceType);
-				services.forEach((item) => servicesMap.set(item.domain, { ...servicesMap.get(item.domain), ...item }));
+				try {
+					const services = await this.api.getServicesByType(serviceType);
+					services.forEach((item) => servicesMap.set(item.domain, { ...servicesMap.get(item.domain), ...item }));
+				} catch (err) {
+					console.warn(`Unable to load services from ${nameserver.url}`);
+					console.error(err);
+				}
 			}
 		}
 
